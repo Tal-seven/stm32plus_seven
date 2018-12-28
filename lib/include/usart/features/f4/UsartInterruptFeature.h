@@ -40,7 +40,7 @@ namespace stm32plus {
       static FPTR _forceLinkage;
 
     public:
-      static void enable();
+      static void enable(uint8_t priority, uint8_t subpriority);
   };
 
 
@@ -55,6 +55,8 @@ namespace stm32plus {
 
     protected:
       uint16_t _interruptMask;
+			uint8_t _nvicPriority;
+			uint8_t _nvicSubPriority;
 
     public:
 
@@ -68,7 +70,10 @@ namespace stm32plus {
     public:
       UsartInterruptFeature(Usart& usart);
       ~UsartInterruptFeature();
-
+			
+			/* Seven Robotics edit. setNvicProperties not provided
+ 			*	for USART*/
+			void setNvicPriorities(uint8_t priority,uint8_t subpriority);
       void enableInterrupts(uint16_t interruptMask);
       void disableInterrupts(uint16_t interruptMask);
       void clearPendingInterruptsFlag(uint16_t interruptMask) const;
@@ -119,6 +124,14 @@ namespace stm32plus {
       disableInterrupts(_interruptMask);
   }
 
+	
+	template<uint8_t TUsartNumber>
+	inline void UsartInterruptFeature<TUsartNumber>::setNvicPriorities(uint8_t priority,uint8_t subpriority) {
+	
+	_nvicPriority=priority;
+	_nvicSubPriority=subpriority;
+	}
+
 
   /**
    * Enable the interrupts specified in the mask
@@ -129,7 +142,7 @@ namespace stm32plus {
   inline void UsartInterruptFeature<TUsartNumber>::enableInterrupts(uint16_t interruptMask) {
 
     _interruptMask|=interruptMask;
-    UsartInterruptFeatureEnabler<TUsartNumber>::enable();
+    UsartInterruptFeatureEnabler<TUsartNumber>::enable(_nvicPriority,_nvicSubPriority);
     USART_ITConfig(_usart,interruptMask,ENABLE);
   }
 
@@ -160,9 +173,9 @@ namespace stm32plus {
    */
 
   template<>
-  inline void UsartInterruptFeatureEnabler<1>::enable() {
+  inline void UsartInterruptFeatureEnabler<1>::enable(uint8_t priority,uint8_t subpriority) {
     _forceLinkage=&USART1_IRQHandler;
-    Nvic::configureIrq(USART1_IRQn);
+    Nvic::configureIrq(USART1_IRQn,ENABLE,priority,subpriority);
   }
 
   /**
@@ -170,9 +183,9 @@ namespace stm32plus {
    */
 
   template<>
-  inline void UsartInterruptFeatureEnabler<2>::enable() {
+  inline void UsartInterruptFeatureEnabler<2>::enable(uint8_t priority,uint8_t subpriority) {
     _forceLinkage=&USART2_IRQHandler;
-    Nvic::configureIrq(USART2_IRQn);
+    Nvic::configureIrq(USART2_IRQn,ENABLE,priority,subpriority);
   }
 
   /**
@@ -180,9 +193,9 @@ namespace stm32plus {
    */
 
   template<>
-  inline void UsartInterruptFeatureEnabler<3>::enable() {
+  inline void UsartInterruptFeatureEnabler<3>::enable(uint8_t priority,uint8_t subpriority) {
     _forceLinkage=&USART3_IRQHandler;
-    Nvic::configureIrq(USART3_IRQn);
+    Nvic::configureIrq(USART3_IRQn,ENABLE,priority,subpriority);
   }
 
   /**
@@ -190,9 +203,9 @@ namespace stm32plus {
    */
 
   template<>
-  inline void UsartInterruptFeatureEnabler<4>::enable() {
+  inline void UsartInterruptFeatureEnabler<4>::enable(uint8_t priority,uint8_t subpriority) {
     _forceLinkage=&UART4_IRQHandler;
-    Nvic::configureIrq(UART4_IRQn);
+    Nvic::configureIrq(UART4_IRQn,ENABLE,priority,subpriority);
   }
 
   /**
@@ -200,9 +213,9 @@ namespace stm32plus {
    */
 
   template<>
-  inline void UsartInterruptFeatureEnabler<5>::enable() {
+  inline void UsartInterruptFeatureEnabler<5>::enable(uint8_t priority,uint8_t subpriority) {
     _forceLinkage=&UART5_IRQHandler;
-    Nvic::configureIrq(UART5_IRQn);
+    Nvic::configureIrq(UART5_IRQn,ENABLE,priority,subpriority);
   }
 
 
@@ -211,8 +224,8 @@ namespace stm32plus {
    */
 
   template<>
-  inline void UsartInterruptFeatureEnabler<6>::enable() {
+  inline void UsartInterruptFeatureEnabler<6>::enable(uint8_t priority,uint8_t subpriority) {
     _forceLinkage=&USART6_IRQHandler;
-    Nvic::configureIrq(USART6_IRQn);
+    Nvic::configureIrq(USART6_IRQn,ENABLE,priority,subpriority);
   }
 }

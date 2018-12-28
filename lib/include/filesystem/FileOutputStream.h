@@ -26,6 +26,7 @@ namespace stm32plus {
 
       virtual bool write(uint8_t c) override;
       virtual bool write(const void *buffer,uint32_t size) override;
+			virtual size_t write(const void* buffer,size_t size) override;
       virtual bool close() override;
 
       virtual bool flush() override;
@@ -52,6 +53,16 @@ namespace stm32plus {
     return _file.write(buffer,size);
   }
 
+	/**
+   * Seven Robotics Extension. Dummy Implementation.
+   */ 
+
+	inline size_t FileOutputStream::write(const void* buffer,size_t size) {
+		
+		(void)buffer;
+		(void)size;
+		return 0;
+	}
 
   /**
    * no-op close

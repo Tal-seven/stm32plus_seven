@@ -58,6 +58,8 @@ namespace stm32plus {
       uint32_t getChannelNumber() const;
 
       operator DMA_PeripheralType *();
+			//Seven Robotics edit
+			DMA_PeripheralType* getDmaStream()	{return _peripheralAddress;}
   };
 
 

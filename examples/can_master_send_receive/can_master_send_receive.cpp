@@ -52,11 +52,11 @@ class CanMasterSendReceive {
     volatile bool _ready;
     volatile uint8_t _receiveData[8];
 
-    enum { LED_PIN = 6 };
+    enum { LED_PIN = 14 };
 
   public:
 
-    CanMasterSendReceive() : _can( { 500000,875 } ) {
+    CanMasterSendReceive() : _can( { 125000,875 } ) {
     }
 
     void run() {
@@ -77,7 +77,7 @@ class CanMasterSendReceive {
        * set up the LED on PF6
        */
 
-      GpioF<DefaultDigitalOutputFeature<LED_PIN>> pf;
+      GpioG<DefaultDigitalOutputFeature<LED_PIN>> pf;
 
       /*
        * Go into an infinite loop sending a message per second

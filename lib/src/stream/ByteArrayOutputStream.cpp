@@ -61,7 +61,7 @@ namespace stm32plus {
    */
 
   bool ByteArrayOutputStream::write(uint8_t c) {
-    return write(&c,1);
+    return write(&c,static_cast<uint32_t>(1));
   }
 
 

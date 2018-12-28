@@ -1,0 +1,59 @@
+virtual bool insert(T data) final
+		{
+			if(this->isFull())
+						return false;
+			
+
+			AtomicObj obj;
+			
+			/*if(data == delimiter::CR || data == delimiter::LF 
+				|| data == delimiter::WDTO || data == delimiter::NUL)
+			{
+				return true;
+			}*/
+			
+			this->_dataBuf[this->_head++ & this->bufMask] = data;
+			this->_head &= this->bufMask;
+
+
+			return true;
+		}
+
+	virtual bool insert(T* data,size_t size) final
+		{
+			if(this->isFull() || (size > this->writesAvailable()))
+				return false;
+	
+			AtomicObj obj;
+			if((bufsize - this->_head) < size)
+				{
+					size_t part1 = size - (bufsize - this->_head);
+					{
+						slice<T> iter(data,part1);
+						for_each_if(iter.begin(),iter.end(),delimitercheck<T>,
+											[&](const T& a){base_t::_dataBuf[base_t::_head++ & base_t::bufMask] 
+																									= a;});
+						this->_head &= this->bufMask;	
+					}
+					size_t part2 = size - part1;
+					{
+						slice<T> iter(data+part1,part2);
+						for_each_if(iter.begin(),iter.end(),delimitercheck<T>,
+											[&](const T& a){base_t::_dataBuf[base_t::_head++ & base_t::bufMask]
+																									= a;});
+						this->_head &= this->bufMask;
+					}
+				}
+				else 
+				{
+					slice<T> iter(data,size);
+					for_each_if(iter.begin(),iter.end(),delimitercheck<T>,
+											[&](const T& a){base_t::_dataBuf[base_t::_head++ & base_t::bufMask]
+													                       = a;});
+					this->_head &= this->bufMask;
+				}
+
+				
+				return true;
+		}
+};

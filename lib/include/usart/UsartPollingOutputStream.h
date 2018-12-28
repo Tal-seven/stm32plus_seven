@@ -27,7 +27,8 @@ namespace stm32plus {
 
       virtual bool write(uint8_t c) override;
       virtual bool write(const void *buffer,uint32_t size) override;
-
+			virtual size_t write(const void* buffer,size_t size) override;
+//			virtual size_t read(const void* buffer,size_t size) override;
       /**
        * Always true.
        * @return always true

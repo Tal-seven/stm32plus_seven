@@ -50,7 +50,19 @@ namespace stm32plus {
        */
 
       virtual bool write(const void *buffer,uint32_t size)=0;
+		
+		 /**
+ 			*	Extended by Seven Robotics. Providing a pure virtual
+ 			*	write method which returns the number of bytes written 
+ 			*	to the stream. Required by the Memory stream class.
+ 			*	Which copies the data pointed to by buffer into its
+ 			*	local buffer.
+ 			*	TODO: Provide a timeout mechanism. For non-blocking IO.
+ 			*/
+      virtual size_t write(const void *buffer,size_t size)=0;                                                                                              
+			/* Seven Robotics Extension*/
 
+//			virtual size_t read(void* buffer,size_t size)=0;
       /**
        * Flush any cached data to the stream. If the stream does not support
        * caching then it returns true.

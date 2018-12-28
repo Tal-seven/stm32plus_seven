@@ -46,6 +46,11 @@
 /**
   * @brief Define to prevent recursive inclusion
   */
+
+/*Change definitions of RCC_CONFIG according to SetSysClock*/
+
+#define RCC_CONFIG				(RCC_CFGR_HPRE_DIV1 | RCC_CFGR_PPRE2_DIV2 | RCC_CFGR_PPRE1_DIV4)
+
 #ifndef __SYSTEM_STM32F4XX_H
 #define __SYSTEM_STM32F4XX_H
 

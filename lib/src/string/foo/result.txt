@@ -1,0 +1,62 @@
+1c1,8
+< virtual bool insert(T data) final
+---
+> template<class AtomicObj, typename T,size_t bufsize>
+> class TokenisedBuffer<AtomicObj,true,T,bufsize> :public RingBuffer<T,bufsize> {
+> using base_t = RingBuffer<T,bufsize>; 
+> public:
+> 	TokenisedBuffer()=default;
+> 	explicit TokenisedBuffer(size_t val): RingBuffer<T,bufsize>(val) {};
+> 	
+> 	virtual bool insert(T data) final
+5,6c12
+< 			
+< 
+---
+> 					
+9c15
+< 			/*if(data == delimiter::CR || data == delimiter::LF 
+---
+> 			if(data == delimiter::CR || data == delimiter::LF
+13,17c19,23
+< 			}*/
+< 			
+< 			this->_dataBuf[this->_head++ & this->bufMask] = data;
+< 			this->_head &= this->bufMask;
+< 
+---
+> 			}
+> 			{
+> 				this->_dataBuf[this->_head++ & this->bufMask] = (data & 0x7f);
+> 				this->_head &= this->bufMask;
+> 			}
+26c32
+< 	
+---
+> 
+27a34
+> 			
+34,36c41,43
+< 											[&](const T& a){base_t::_dataBuf[base_t::_head++ & base_t::bufMask] 
+< 																									= a;});
+< 						this->_head &= this->bufMask;	
+---
+> 											[&](const T& a){base_t::_dataBuf[base_t::_head++ & base_t::bufMask]
+> 																							= (a & 0x7f);});
+> 						this->_head &= this->bufMask;
+42,43c49,50
+< 											[&](const T& a){base_t::_dataBuf[base_t::_head++ & base_t::bufMask]
+< 																									= a;});
+---
+> 												[&](const T& a){base_t::_dataBuf[base_t::_head++ & base_t::bufMask]
+> 																							= (a & 0x7f);});
+47c54
+< 				else 
+---
+> 				else
+52c59
+< 													                       = a;});
+---
+> 													                    = (a & 0x7f);});
+56d62
+< 				

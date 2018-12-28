@@ -43,4 +43,20 @@ namespace stm32plus {
 
     return true;
   }
+
+	size_t UsartPollingOutputStream::write(const void* buffer,size_t size){
+
+		const uint8_t* ptr;
+		size_t n=0;
+		ptr= static_cast<const uint8_t*>(buffer);
+
+		while(size--)
+		{
+			_usart.send(*ptr++);
+			n++;
+		}
+		
+		return n;
+	}
+
 }

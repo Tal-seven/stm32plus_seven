@@ -24,7 +24,7 @@ extern "C" {
 
   #if defined(USE_USART3_INTERRUPT)
 
-    void __attribute__ ((interrupt("IRQ"))) USART3_IRQHandler(void) {
+    void  USART3_IRQHandler(void) {
       if(USART_GetITStatus(USART3,USART_IT_RXNE)!=RESET) {
         UsartInterruptFeature<3>::_usartInstance->UsartInterruptEventSender.raiseEvent(UsartEventType::EVENT_RECEIVE);
         USART_ClearITPendingBit(USART3,USART_IT_RXNE);

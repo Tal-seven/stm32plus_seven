@@ -71,5 +71,18 @@ namespace stm32plus {
           free(_buffer);
       }
 
+			virtual size_t write(const void* buffer,size_t size) override;
+
   };
+
+		/**
+     * Seven Robotics Extension. Dummy Implementation.
+     */
+
+			inline size_t BufferedInputOutputStream::write(const void* buffer,size_t size) {
+			
+				(void)buffer;	
+				(void)size;
+				return 0;
+			} 	
 }

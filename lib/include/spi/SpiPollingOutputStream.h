@@ -27,7 +27,7 @@ namespace stm32plus {
 
       virtual bool write(uint8_t c) override;
       virtual bool write(const void *buffer,uint32_t size) override;
-
+			virtual size_t write(const void* buffer,size_t size) override;
       /**
        * Always true.
        * @return always true
@@ -46,4 +46,16 @@ namespace stm32plus {
         return true;
       }
   };
+
+	/**
+ 	 * Seven Robotics Extension. Dummy implementation. 
+ 	 * TODO: provide a usable implementation.
+ 	 */
+		
+		inline size_t SpiPollingOutputStream::write(const void* buffer,size_t size) {
+		
+			(void)buffer;
+			(void)size;
+			return 0;
+		} 
 }

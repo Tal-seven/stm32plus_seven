@@ -52,7 +52,7 @@ namespace stm32plus {
       static FPTR _forceLinkage;
 
     public:
-      static void enable(uint8_t priority,uint8_t subPriority);
+      static void enable(uint8_t priority,uint8_t subpriority);
   };
 
 
@@ -172,51 +172,51 @@ namespace stm32plus {
    */
 
   template<>
-  inline void DmaInterruptFeatureEnabler<1,0>::enable(uint8_t priority,uint8_t subPriority) {
+  inline void DmaInterruptFeatureEnabler<1,0>::enable(uint8_t priority,uint8_t subpriority) {
     _forceLinkage=&DMA1_Stream0_IRQHandler;
-    Nvic::configureIrq(DMA1_Stream0_IRQn,ENABLE,priority,subPriority);
+    Nvic::configureIrq(DMA1_Stream0_IRQn,ENABLE,priority,subpriority);
   }
 
   template<>
-  inline void DmaInterruptFeatureEnabler<1,1>::enable(uint8_t priority,uint8_t subPriority) {
+  inline void DmaInterruptFeatureEnabler<1,1>::enable(uint8_t priority,uint8_t subpriority) {
     _forceLinkage=&DMA1_Stream1_IRQHandler;
-    Nvic::configureIrq(DMA1_Stream1_IRQn,ENABLE,priority,subPriority);
+    Nvic::configureIrq(DMA1_Stream1_IRQn,ENABLE,priority,subpriority);
   }
 
   template<>
-  inline void DmaInterruptFeatureEnabler<1,2>::enable(uint8_t priority,uint8_t subPriority) {
+  inline void DmaInterruptFeatureEnabler<1,2>::enable(uint8_t priority,uint8_t subpriority) {
     _forceLinkage=&DMA1_Stream2_IRQHandler;
-    Nvic::configureIrq(DMA1_Stream2_IRQn,ENABLE,priority,subPriority);
+    Nvic::configureIrq(DMA1_Stream2_IRQn,ENABLE,priority,subpriority);
   }
 
   template<>
-  inline void DmaInterruptFeatureEnabler<1,3>::enable(uint8_t priority,uint8_t subPriority) {
+  inline void DmaInterruptFeatureEnabler<1,3>::enable(uint8_t priority,uint8_t subpriority) {
     _forceLinkage=&DMA1_Stream3_IRQHandler;
-    Nvic::configureIrq(DMA1_Stream3_IRQn,ENABLE,priority,subPriority);
+    Nvic::configureIrq(DMA1_Stream3_IRQn,ENABLE,priority,subpriority);
   }
 
   template<>
-  inline void DmaInterruptFeatureEnabler<1,4>::enable(uint8_t priority,uint8_t subPriority) {
+  inline void DmaInterruptFeatureEnabler<1,4>::enable(uint8_t priority,uint8_t subpriority) {
     _forceLinkage=&DMA1_Stream4_IRQHandler;
-    Nvic::configureIrq(DMA1_Stream4_IRQn,ENABLE,priority,subPriority);
+    Nvic::configureIrq(DMA1_Stream4_IRQn,ENABLE,priority,subpriority);
   }
 
   template<>
-  inline void DmaInterruptFeatureEnabler<1,5>::enable(uint8_t priority,uint8_t subPriority) {
+  inline void DmaInterruptFeatureEnabler<1,5>::enable(uint8_t priority,uint8_t subpriority) {
     _forceLinkage=&DMA1_Stream5_IRQHandler;
-    Nvic::configureIrq(DMA1_Stream5_IRQn,ENABLE,priority,subPriority);
+    Nvic::configureIrq(DMA1_Stream5_IRQn,ENABLE,priority,subpriority);
   }
 
   template<>
-  inline void DmaInterruptFeatureEnabler<1,6>::enable(uint8_t priority,uint8_t subPriority) {
+  inline void DmaInterruptFeatureEnabler<1,6>::enable(uint8_t priority,uint8_t subpriority) {
     _forceLinkage=&DMA1_Stream6_IRQHandler;
-    Nvic::configureIrq(DMA1_Stream6_IRQn,ENABLE,priority,subPriority);
+    Nvic::configureIrq(DMA1_Stream6_IRQn,ENABLE,priority,subpriority);
   }
 
   template<>
-  inline void DmaInterruptFeatureEnabler<1,7>::enable(uint8_t priority,uint8_t subPriority) {
+  inline void DmaInterruptFeatureEnabler<1,7>::enable(uint8_t priority,uint8_t subpriority) {
     _forceLinkage=&DMA1_Stream7_IRQHandler;
-    Nvic::configureIrq(DMA1_Stream7_IRQn,ENABLE,priority,subPriority);
+    Nvic::configureIrq(DMA1_Stream7_IRQn,ENABLE,priority,subpriority);
   }
 
   /**
@@ -224,50 +224,50 @@ namespace stm32plus {
    */
 
   template<>
-  inline void DmaInterruptFeatureEnabler<2,0>::enable(uint8_t priority,uint8_t subPriority) {
+  inline void DmaInterruptFeatureEnabler<2,0>::enable(uint8_t priority,uint8_t subpriority) {
     _forceLinkage=&DMA2_Stream0_IRQHandler;
-    Nvic::configureIrq(DMA2_Stream0_IRQn,ENABLE,priority,subPriority);
+    Nvic::configureIrq(DMA2_Stream0_IRQn,ENABLE,priority,subpriority);
   }
 
   template<>
-  inline void DmaInterruptFeatureEnabler<2,1>::enable(uint8_t priority,uint8_t subPriority) {
+  inline void DmaInterruptFeatureEnabler<2,1>::enable(uint8_t priority,uint8_t subpriority) {
     _forceLinkage=&DMA2_Stream1_IRQHandler;
-    Nvic::configureIrq(DMA2_Stream1_IRQn,ENABLE,priority,subPriority);
+    Nvic::configureIrq(DMA2_Stream1_IRQn,ENABLE,priority,subpriority);
   }
 
   template<>
-  inline void DmaInterruptFeatureEnabler<2,2>::enable(uint8_t priority,uint8_t subPriority) {
+  inline void DmaInterruptFeatureEnabler<2,2>::enable(uint8_t priority,uint8_t subpriority) {
     _forceLinkage=&DMA2_Stream2_IRQHandler;
-    Nvic::configureIrq(DMA2_Stream2_IRQn,ENABLE,priority,subPriority);
+    Nvic::configureIrq(DMA2_Stream2_IRQn,ENABLE,priority,subpriority);
   }
 
   template<>
-  inline void DmaInterruptFeatureEnabler<2,3>::enable(uint8_t priority,uint8_t subPriority) {
+  inline void DmaInterruptFeatureEnabler<2,3>::enable(uint8_t priority,uint8_t subpriority) {
     _forceLinkage=&DMA2_Stream3_IRQHandler;
-    Nvic::configureIrq(DMA2_Stream3_IRQn,ENABLE,priority,subPriority);
+    Nvic::configureIrq(DMA2_Stream3_IRQn,ENABLE,priority,subpriority);
   }
 
   template<>
-  inline void DmaInterruptFeatureEnabler<2,4>::enable(uint8_t priority,uint8_t subPriority) {
+  inline void DmaInterruptFeatureEnabler<2,4>::enable(uint8_t priority,uint8_t subpriority) {
     _forceLinkage=&DMA2_Stream4_IRQHandler;
-    Nvic::configureIrq(DMA2_Stream4_IRQn,ENABLE,priority,subPriority);
+    Nvic::configureIrq(DMA2_Stream4_IRQn,ENABLE,priority,subpriority);
   }
 
   template<>
-  inline void DmaInterruptFeatureEnabler<2,5>::enable(uint8_t priority,uint8_t subPriority) {
+  inline void DmaInterruptFeatureEnabler<2,5>::enable(uint8_t priority,uint8_t subpriority) {
     _forceLinkage=&DMA2_Stream5_IRQHandler;
-    Nvic::configureIrq(DMA2_Stream5_IRQn,ENABLE,priority,subPriority);
+    Nvic::configureIrq(DMA2_Stream5_IRQn,ENABLE,priority,subpriority);
   }
 
   template<>
-  inline void DmaInterruptFeatureEnabler<2,6>::enable(uint8_t priority,uint8_t subPriority) {
+  inline void DmaInterruptFeatureEnabler<2,6>::enable(uint8_t priority,uint8_t subpriority) {
     _forceLinkage=&DMA2_Stream6_IRQHandler;
-    Nvic::configureIrq(DMA2_Stream6_IRQn,ENABLE,priority,subPriority);
+    Nvic::configureIrq(DMA2_Stream6_IRQn,ENABLE,priority,subpriority);
   }
 
   template<>
-  inline void DmaInterruptFeatureEnabler<2,7>::enable(uint8_t priority,uint8_t subPriority) {
+  inline void DmaInterruptFeatureEnabler<2,7>::enable(uint8_t priority,uint8_t subpriority) {
     _forceLinkage=&DMA2_Stream7_IRQHandler;
-    Nvic::configureIrq(DMA2_Stream7_IRQn,ENABLE,priority,subPriority);
+    Nvic::configureIrq(DMA2_Stream7_IRQn,ENABLE,priority,subpriority);
   }
 }

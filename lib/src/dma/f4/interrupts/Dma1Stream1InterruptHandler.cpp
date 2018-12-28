@@ -27,7 +27,7 @@ extern "C" {
    */
 
   #if defined(USE_DMA1_1_INTERRUPT)
-    void __attribute__ ((interrupt("IRQ"))) DMA1_Stream1_IRQHandler() {
+    void DMA1_Stream1_IRQHandler() {
 
       if(DMA_GetITStatus(DMA1_Stream1,DMA_IT_TCIF1)!=RESET) {
         DmaInterruptFeature<1,1>::_dmaInstance->DmaInterruptEventSender.raiseEvent(DmaEventType::EVENT_COMPLETE);
