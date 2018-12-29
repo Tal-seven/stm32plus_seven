@@ -56,7 +56,7 @@ namespace wink {
 
       void insertSubscriber(const slot_type& slot) {
 
-        if(_slots.size()==0)
+        if(_slots.empty()==0)
           _firstSlot=slot;
 
         _slots.push_front(slot);
@@ -68,9 +68,9 @@ namespace wink {
 
       bool removeSubscriber(const slot_type& slot) {
 
-        for(auto it=_slots.begin();it!=_slots.end();it++) {
-          if(*it==slot) {
-            _slots.erase(it);
+        for(auto it=_slots.before_begin();it!=_slots.end();it++) {
+          if(*next(it)==slot) {
+            _slots.erase_after(it);
             return true;
           }
         }
@@ -82,7 +82,7 @@ namespace wink {
       template <class ...Args>
       void raiseEvent(Args&&... args) const {
 
-        if(_slots.size()==1)
+        if(std::distance(_slots.begin(),_slots.end())==1)
           _firstSlot(args...);
         else {
           for(auto it=_slots.begin();it!=_slots.end();it++)
