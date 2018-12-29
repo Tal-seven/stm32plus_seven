@@ -185,15 +185,15 @@ namespace stm32plus {
 
       // check each entry and delete if expired
 
-      for(auto it=_frags.begin();it!=_frags.end();) {
+      for(auto it=_frags.before_begin();it!=_frags.end();) {
 
-        if(nitd.timeNow>(*it)->expiryTime) {
+        if(nitd.timeNow>(*next(it))->expiryTime) {
 
-          _totalFragmentSize-=(*it)->packetLength;
+          _totalFragmentSize-=(*next(it))->packetLength;
           _inFlightPacketCount--;
 
-          delete *it;
-          it=_frags.erase(it);
+          delete *next(it);
+          it=_frags.erase_after(it);
         }
         else
           it++;
@@ -215,9 +215,9 @@ namespace stm32plus {
 
       // find and free the packet
 
-      for(auto it=_frags.begin();it!=_frags.end();it++) {
+      for(auto it=_frags.before_begin();it!=_frags.end();it++) {
         if(*it==packetToFree) {
-          _frags.erase(it);
+          _frags.erase_after(it);
           break;
         }
       }
@@ -260,7 +260,17 @@ namespace stm32plus {
 
       // check for the maximum fragmented packets
 
-      if(_frags.size()==_params.ip_maxInProgressFragmentedPackets)
+   	/**
+			* Seven Robotics Extension. Since slist has been replaced with forward_list for future
+			* compatibility with libstdc++. An in place method is being implemented below to get number
+			* of packets. Because this will not be a very large number (default=2). Traversing the list 
+			* linearly will not add alot of overhead.
+			* Note: std::distance returns difference_type of the iterator type.
+			* Which for _Fwd_list_iterator is ptrdiff_t.*/ 
+    
+			auto len = std::distance(_frags.begin(),_frags.end());
+
+     if(len ==_params.ip_maxInProgressFragmentedPackets) 
         return errorProvider.set(ErrorProvider::ERROR_PROVIDER_NET_IP_PACKET_REASSEMBLER,E_TOO_MANY_FRAGMENTED_PACKETS);
 
       // create the new entry (expiry time is not set here)
