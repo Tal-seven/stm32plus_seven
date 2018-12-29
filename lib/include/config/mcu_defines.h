@@ -120,6 +120,7 @@
 
 #elif defined(STM32PLUS_F429)
   #define STM32PLUS_F4
+	#define STM32F429xx
   #define STM32F429_439xx
   #define STM32PLUS_F4_HAS_MAC
   #define STM32PLUS_F4_HAS_DCMI
