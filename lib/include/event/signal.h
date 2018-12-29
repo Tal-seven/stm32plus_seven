@@ -46,7 +46,7 @@ namespace wink {
 #ifdef EXT_SLIST     
       __gnu_cxx::slist<slot_type> _slots;
 #else
-      std::slist<slot_type> _slots;
+      std::forward_list<slot_type> _slots;
 #endif
     public:
 
