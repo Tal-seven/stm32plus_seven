@@ -60,7 +60,7 @@ namespace stm32plus {
       protected:
         Parameters _params;
         uint16_t _serverCount;
-        std::slist<TcpClosingConnectionState> _closingConnections;
+        std::forward_list<TcpClosingConnectionState> _closingConnections;
 
       protected:
         void onNotification(NetEventDescriptor& ned);
@@ -190,7 +190,7 @@ namespace stm32plus {
 
       // check if this segment is for one of the closing connections
 
-      std::slist<TcpClosingConnectionState>::iterator it,previt;
+      std::forward_list<TcpClosingConnectionState>::iterator it,previt;
       bool notfound;
 
       {
@@ -235,7 +235,7 @@ namespace stm32plus {
               IrqSuspend suspender;
 
               if(it==_closingConnections.begin())
-                _closingConnections.erase(_closingConnections.begin());
+                _closingConnections.erase_after(_closingConnections.before_begin());
               else
                 _closingConnections.erase_after(previt);
             }
@@ -338,32 +338,32 @@ namespace stm32plus {
     template<class TNetworkLayer>
     __attribute__((noinline)) inline void Tcp<TNetworkLayer>::onTick(NetworkIntervalTickData& nitd) {
 
-      std::slist<TcpClosingConnectionState>::iterator previt,it;
+      std::forward_list<TcpClosingConnectionState>::iterator previt,it;
 
       // iterate the closing connections
 
-      for(it=previt=_closingConnections.begin();it!=_closingConnections.end();) {
+      for(it=previt=_closingConnections.before_begin();it!=_closingConnections.end();) {
 
         // check if it's expired
 
-        if(nitd.timeNow>it->cleanupTime) {
+        if(nitd.timeNow>(next(it))->cleanupTime) {
 
           // if the state is not CLOSED or TIME_WAIT then the close sequence has not
           // completed as it should. we send a RST to the other end to tell it to shutdown.
 
-          if(it->state!=TcpState::TIME_WAIT && it->state!=TcpState::CLOSED)
-            it->sendRstAck(*this,0);
+          if((next(it))->state!=TcpState::TIME_WAIT && (next(it))->state!=TcpState::CLOSED)
+            (next(it))->sendRstAck(*this,0);
 
           // if the local port is ephemeral then release it
 
-          if(it->localPortIsEphemeral)
-            this->ip_releaseEphemeralPort(it->localPort);
+          if((next(it))->localPortIsEphemeral)
+            this->ip_releaseEphemeralPort((next(it))->localPort);
 
           // if this is the head of the list, remove it and continue again from the start
 
-          if(it==_closingConnections.begin()) {
-            _closingConnections.erase(_closingConnections.begin());
-            it=previt=_closingConnections.begin();
+          if(it==_closingConnections.before_begin()) {
+            _closingConnections.erase_after(_closingConnections.before_begin());
+            it=previt=_closingConnections.before_begin();
           }
           else {
 
@@ -412,7 +412,7 @@ namespace stm32plus {
 
       // add to the list (struct copy)
 
-      std::slist<TcpClosingConnectionState>::iterator it;
+      std::forward_list<TcpClosingConnectionState>::iterator it;
 
       {
         IrqSuspend suspender;
