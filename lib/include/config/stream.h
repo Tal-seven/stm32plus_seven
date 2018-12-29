@@ -18,7 +18,7 @@
 #include "config/timing.h"
 #include "util/DoublePrecision.h"
 #include "memory/Memblock.h"
-#include "string"
+#include "config/string.h"
 
 // includes for the feature
 
