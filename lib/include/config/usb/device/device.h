@@ -63,7 +63,7 @@
   #include "config/rcc.h"
   #include "config/exti.h"
   #include "util/Meta.h"
-  #include "util/StdExt.h"
+ 
 
   #include "usb/f4/device/HalUsbdStatus.h"
 
