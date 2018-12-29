@@ -16,7 +16,6 @@
   #include "config/event.h"
   #include "config/nvic.h"
   #include "util/BitHacks.h"
-  #include "util/StdExt.h"
 
   // core includes
 
