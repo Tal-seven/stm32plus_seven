@@ -19,7 +19,7 @@ using namespace stm32plus;
 template<> TimerInterruptFeatureEnabler<1>::FPTR TimerInterruptFeatureEnabler<1>::_forceLinkage=nullptr;
 template<> TimerInterruptFeatureEnabler<9>::FPTR TimerInterruptFeatureEnabler<9>::_forceLinkage=nullptr;
 template<> TimerInterruptFeatureEnabler<10>::FPTR TimerInterruptFeatureEnabler<10>::_forceLinkage=nullptr;
-
+template<> TimerInterruptFeatureEnabler<11>::FPTR TimerInterruptFeatureEnabler<11>::_forceLinkage=nullptr;
 
 extern "C" {
 

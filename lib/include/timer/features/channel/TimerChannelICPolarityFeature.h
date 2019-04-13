@@ -34,6 +34,6 @@ namespace stm32plus {
    */
 
   typedef TimerChannelICPolarityFeature<TIM_ICPolarity_Rising> TimerChannelICRisingEdgeFeature;
-  typedef TimerChannelICPolarityFeature<TIM_ICPolarity_Falling> TimerChanneICFallingEdgeFeature;
+  typedef TimerChannelICPolarityFeature<TIM_ICPolarity_Falling> TimerChannelICFallingEdgeFeature;
   typedef TimerChannelICPolarityFeature<TIM_ICPolarity_BothEdge> TimerChannelICBothEdgesFeature;
 }
