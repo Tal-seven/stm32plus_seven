@@ -56,7 +56,7 @@ namespace wink {
 
       void insertSubscriber(const slot_type& slot) {
 
-        if(_slots.empty()==0)
+        if(_slots.empty())
           _firstSlot=slot;
 
         _slots.push_front(slot);
