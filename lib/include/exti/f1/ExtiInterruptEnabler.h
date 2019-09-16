@@ -167,12 +167,20 @@ namespace stm32plus {
   template<>
   inline void ExtiInterruptEnabler<17>::enable() {
     _forceLinkage=&RTCAlarm_IRQHandler;
-    Nvic::configureIrq(RTCAlarm_IRQn);
+#if defined(USECHIBIOS)
+    Nvic::configureIrq(RTC_Alarm_IRQn);
+#else
+		Nvic::configureIrq(RTCAlarm_IRQn);
+#endif
   }
 
   template<>
   inline void ExtiInterruptEnabler<17>::disable() {
-    Nvic::configureIrq(RTCAlarm_IRQn,DISABLE);
+#if defined(USECHIBIOS)
+		Nvic::configureIrq(RTC_Alarm_IRQn,DISABLE);
+#else
+		Nvic::configureIrq(RTCAlarm_IRQn,DISABLE);
+#endif
   }
 
 #if defined(STM32PLUS_F1_CL)

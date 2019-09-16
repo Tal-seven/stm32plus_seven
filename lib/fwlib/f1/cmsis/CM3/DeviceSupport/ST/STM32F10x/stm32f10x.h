@@ -170,6 +170,7 @@
  * @brief STM32F10x Interrupt Number Definition, according to the selected device 
  *        in @ref Library_configuration_section 
  */
+#if !defined(USECHIBIOS)
 typedef enum IRQn
 {
 /******  Cortex-M3 Processor Exceptions Numbers ***************************************************/
@@ -480,8 +481,9 @@ typedef enum IRQn
 /**
   * @}
   */
-
-#include "fwlib/f1/cmsis/CM3/CoreSupport/core_cm3.h"
+#if !defined(USECHIBIOS)
+	#include "fwlib/f1/cmsis/CM3/CoreSupport/core_cm3.h"
+#endif
 #include "system_stm32f10x.h"
 #include <stdint.h>
 
@@ -1265,7 +1267,7 @@ typedef struct
   __IO uint32_t CFR;
   __IO uint32_t SR;
 } WWDG_TypeDef;
-
+#endif /*USECHIBIOS*/
 /**
   * @}
   */
@@ -1479,7 +1481,7 @@ typedef struct
 /*                          CRC calculation unit                              */
 /*                                                                            */
 /******************************************************************************/
-
+#if !defined(USECHIBIOS)
 /*******************  Bit definition for CRC_DR register  *********************/
 #define  CRC_DR_DR                           ((uint32_t)0xFFFFFFFF) /*!< Data register bits */
 
@@ -8292,7 +8294,7 @@ typedef struct
 /* Bit definition for Ethernet DMA Current Host Receive Buffer Address Register */
 #define ETH_DMACHRBAR_HRBAP  ((uint32_t)0xFFFFFFFF)  /* Host receive buffer address pointer */
 #endif /* STM32F10X_CL */
-
+#endif	/* USECHIBIOS */
 /**
   * @}
   */

@@ -29,8 +29,9 @@
 #endif
 
 /* Includes ------------------------------------------------------------------*/
-#include "fwlib/f1/cmsis/CM3/DeviceSupport/ST/STM32F10x/stm32f10x.h"
-
+#if !defined(USECHIBIOS)
+	#include "fwlib/f1/cmsis/CM3/DeviceSupport/ST/STM32F10x/stm32f10x.h"
+#endif
 /** @addtogroup STM32F10x_StdPeriph_Driver
   * @{
   */
