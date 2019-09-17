@@ -59,7 +59,6 @@
 #define assert_param(expr) ((void)0)
 #include "config/mcu_defines.h"
 
-
 /** @addtogroup Library_configuration_section
   * @{
   */
