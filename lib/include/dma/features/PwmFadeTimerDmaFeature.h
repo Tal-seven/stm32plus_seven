@@ -180,7 +180,7 @@ namespace stm32plus {
   using Timer7Channel4UpdatePwmFadeTimerDmaFeature = PwmFadeTimerDmaFeature<Timer7Ccr4DmaPeripheralInfo,TIM_DMA_Update,TPriority,TDmaMode>;
 
   // TIM8
-
+#if !(MCU==F107)
   template<uint32_t TPriority=DMA_Priority_High,uint32_t TDmaMode=DMA_Mode_Normal>
   using Timer8Channel1UpdatePwmFadeTimerDmaFeature = PwmFadeTimerDmaFeature<Timer8Ccr1DmaPeripheralInfo,TIM_DMA_Update,TPriority,TDmaMode>;
 
@@ -192,6 +192,7 @@ namespace stm32plus {
 
   template<uint32_t TPriority=DMA_Priority_High,uint32_t TDmaMode=DMA_Mode_Normal>
   using Timer8Channel4UpdatePwmFadeTimerDmaFeature = PwmFadeTimerDmaFeature<Timer8Ccr4DmaPeripheralInfo,TIM_DMA_Update,TPriority,TDmaMode>;
+#endif /*MCU==F107*/
 
 #endif
 

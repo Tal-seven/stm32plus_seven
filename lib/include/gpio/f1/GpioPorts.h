@@ -24,6 +24,8 @@ namespace stm32plus {
   template<class... Features> using GpioC=GpioPort<GPIOC_BASE,Features...>;
   template<class... Features> using GpioD=GpioPort<GPIOD_BASE,Features...>;
   template<class... Features> using GpioE=GpioPort<GPIOE_BASE,Features...>;
-  template<class... Features> using GpioF=GpioPort<GPIOF_BASE,Features...>;
+#if !(MCU==F107)
+	template<class... Features> using GpioF=GpioPort<GPIOF_BASE,Features...>;
   template<class... Features> using GpioG=GpioPort<GPIOG_BASE,Features...>;
+#endif
 }

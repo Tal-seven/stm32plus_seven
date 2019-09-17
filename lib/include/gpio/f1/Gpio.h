@@ -255,8 +255,10 @@ namespace stm32plus {
       case GPIOC_BASE: portSource=GPIO_PortSourceGPIOC; break;
       case GPIOD_BASE: portSource=GPIO_PortSourceGPIOD; break;
       case GPIOE_BASE: portSource=GPIO_PortSourceGPIOE; break;
+#if !(MCU==F107)
       case GPIOF_BASE: portSource=GPIO_PortSourceGPIOF; break;
       case GPIOG_BASE: portSource=GPIO_PortSourceGPIOG; break;
+#endif 
       default: portSource=0; break;
     }
 

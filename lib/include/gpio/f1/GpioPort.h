@@ -28,8 +28,10 @@ namespace stm32plus {
     template<> inline uint32_t getPeripheral<GPIOC_BASE>() { return RCC_APB2Periph_GPIOC; }
     template<> inline uint32_t getPeripheral<GPIOD_BASE>() { return RCC_APB2Periph_GPIOD; }
     template<> inline uint32_t getPeripheral<GPIOE_BASE>() { return RCC_APB2Periph_GPIOE; }
-    template<> inline uint32_t getPeripheral<GPIOF_BASE>() { return RCC_APB2Periph_GPIOF; }
+#if !(MCU == F107)
+		template<> inline uint32_t getPeripheral<GPIOF_BASE>() { return RCC_APB2Periph_GPIOF; }
     template<> inline uint32_t getPeripheral<GPIOG_BASE>() { return RCC_APB2Periph_GPIOG; }
+#endif 
   }
 
 
