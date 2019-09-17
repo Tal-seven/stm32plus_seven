@@ -78,7 +78,10 @@
 #if defined(STM32PLUS_F1) || defined(STM32PLUS_F0) || defined(STM32PLUS_F4_HAS_TIM6_7_8_12_13_14)
 
   #include "timer/Timer6.h"
+
+#if !(MCU==F107)
   #include "timer/Timer14.h"
+#endif 
 
 #endif
 
@@ -89,12 +92,14 @@
   #include "timer/f1/Timer4.h"
   #include "timer/f1/Timer5.h"
   #include "timer/f1/Timer7.h"
-  #include "timer/f1/Timer8.h"
+#if !(MCU==F107)
+	#include "timer/f1/Timer8.h"
   #include "timer/f1/Timer9.h"
   #include "timer/f1/Timer10.h"
   #include "timer/f1/Timer11.h"
   #include "timer/f1/Timer12.h"
   #include "timer/f1/Timer13.h"
+#endif
 
 #elif defined(STM32PLUS_F4)
 
@@ -175,13 +180,14 @@
   #include "timer/features/f1/Timer3GpioFeature.h"
   #include "timer/features/f1/Timer4GpioFeature.h"
   #include "timer/features/f1/Timer5GpioFeature.h"
-  #include "timer/features/f1/Timer8GpioFeature.h"
+#if !(MCU==F107)
+	#include "timer/features/f1/Timer8GpioFeature.h"
   #include "timer/features/f1/Timer9GpioFeature.h"
   #include "timer/features/f1/Timer10GpioFeature.h"
   #include "timer/features/f1/Timer11GpioFeature.h"
   #include "timer/features/f1/Timer13GpioFeature.h"
   #include "timer/features/f1/Timer14GpioFeature.h"
-
+#endif 
 #elif defined(STM32PLUS_F4)
 
   #include "timer/f4/TimerAlternateFunctionMapper.h"

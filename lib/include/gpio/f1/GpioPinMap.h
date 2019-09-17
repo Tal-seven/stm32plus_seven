@@ -574,7 +574,7 @@ namespace stm32plus {
         Pin=GPIO_Pin_15
       };
     };
-
+#if !(MCU==F107)
     struct PF0 {
       enum {
         Port=GPIOF_BASE,
@@ -798,5 +798,6 @@ namespace stm32plus {
         Pin=GPIO_Pin_15
       };
     };
+#endif
   }
 }

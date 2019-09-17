@@ -58,7 +58,7 @@
 
 #define assert_param(expr) ((void)0)
 #include "config/mcu_defines.h"
-
+#include "core_cm3.h"
 
 /** @addtogroup Library_configuration_section
   * @{
@@ -481,9 +481,9 @@ typedef enum IRQn
 /**
   * @}
   */
-#if !defined(USECHIBIOS)
-	#include "fwlib/f1/cmsis/CM3/CoreSupport/core_cm3.h"
-#endif
+
+#include "fwlib/f1/cmsis/CM3/CoreSupport/core_cm3.h"
+#endif /*USECHIBIOS*/
 #include "system_stm32f10x.h"
 #include <stdint.h>
 
@@ -535,6 +535,8 @@ typedef enum {ERROR = 0, SUCCESS = !ERROR} ErrorStatus;
 #define HSEStartUp_TimeOut   HSE_STARTUP_TIMEOUT
 #define HSE_Value            HSE_VALUE
 #define HSI_Value            HSI_VALUE
+
+#if !defined(USECHIBIOS)
 /**
   * @}
   */

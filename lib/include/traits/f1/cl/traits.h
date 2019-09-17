@@ -198,7 +198,7 @@ namespace stm32plus {
     };
   };
   typedef PeripheralTraits<PERIPHERAL_TIMER7> Timer7PeripheralTraits;
-
+#if !(MCU == F107)
   template<>
   struct PeripheralTraits<PERIPHERAL_TIMER8> {
     enum {
@@ -268,7 +268,7 @@ namespace stm32plus {
     };
   };
   typedef PeripheralTraits<PERIPHERAL_TIMER14> Timer14PeripheralTraits;
-
+#endif 
   template<>
   struct PeripheralTraits<PERIPHERAL_USART1> {
     enum {

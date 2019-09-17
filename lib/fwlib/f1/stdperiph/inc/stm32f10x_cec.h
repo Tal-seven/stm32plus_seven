@@ -29,7 +29,11 @@
 #endif
 
 /* Includes ------------------------------------------------------------------*/
+#if !defined(USECHIBIOS)
 #include "fwlib/f1/cmsis/CM3/DeviceSupport/ST/STM32F10x/stm32f10x.h"
+#else
+#include "stm32f1xx.h"
+#endif
 
 /** @addtogroup STM32F10x_StdPeriph_Driver
   * @{
