@@ -59,7 +59,6 @@
 #define assert_param(expr) ((void)0)
 #include "config/mcu_defines.h"
 
-
 /** @addtogroup Library_configuration_section
   * @{
   */
@@ -484,8 +483,6 @@ typedef enum IRQn
 
 #include "fwlib/f1/cmsis/CM3/CoreSupport/core_cm3.h"
 #endif /*USECHIBIOS*/
-
-#include "system_stm32f10x.h"
 #include <stdint.h>
 
 /** @addtogroup Exported_types
