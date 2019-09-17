@@ -81,7 +81,7 @@ namespace stm32plus {
   struct Timer7Ccr2DmaPeripheralInfo : TimerDmaPeripheralInfo { enum { REGISTER_ADDRESS = TIM7_BASE + __builtin_offsetof(TIM_TypeDef,CCR2) }; };
   struct Timer7Ccr3DmaPeripheralInfo : TimerDmaPeripheralInfo { enum { REGISTER_ADDRESS = TIM7_BASE + __builtin_offsetof(TIM_TypeDef,CCR3) }; };
   struct Timer7Ccr4DmaPeripheralInfo : TimerDmaPeripheralInfo { enum { REGISTER_ADDRESS = TIM7_BASE + __builtin_offsetof(TIM_TypeDef,CCR4) }; };
-
+#if !(MCU == F107)
   struct Timer8CntDmaPeripheralInfo : TimerDmaPeripheralInfo { enum { REGISTER_ADDRESS = TIM8_BASE + __builtin_offsetof(TIM_TypeDef,CNT) }; };
   struct Timer8ArrDmaPeripheralInfo : TimerDmaPeripheralInfo { enum { REGISTER_ADDRESS = TIM8_BASE + __builtin_offsetof(TIM_TypeDef,ARR) }; };
   struct Timer8RcrDmaPeripheralInfo : TimerDmaPeripheralInfo { enum { REGISTER_ADDRESS = TIM8_BASE + __builtin_offsetof(TIM_TypeDef,RCR) }; };
@@ -89,7 +89,7 @@ namespace stm32plus {
   struct Timer8Ccr2DmaPeripheralInfo : TimerDmaPeripheralInfo { enum { REGISTER_ADDRESS = TIM8_BASE + __builtin_offsetof(TIM_TypeDef,CCR2) }; };
   struct Timer8Ccr3DmaPeripheralInfo : TimerDmaPeripheralInfo { enum { REGISTER_ADDRESS = TIM8_BASE + __builtin_offsetof(TIM_TypeDef,CCR3) }; };
   struct Timer8Ccr4DmaPeripheralInfo : TimerDmaPeripheralInfo { enum { REGISTER_ADDRESS = TIM8_BASE + __builtin_offsetof(TIM_TypeDef,CCR4) }; };
-
+#endif
   struct UsartDmaPeripheralInfo {
       enum {
         MEMORY_WORD_SIZE = DMA_MemoryDataSize_Byte,
