@@ -35,6 +35,7 @@
 
 #if defined(STM32PLUS_F1)
   #include "can/f1/Can1.h"
+	#include "can/f1/Can2.h"
 #elif defined(STM32PLUS_F4)
   #include "can/f4/Can1.h"
   #include "can/f4/Can2.h"
