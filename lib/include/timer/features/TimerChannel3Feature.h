@@ -28,6 +28,7 @@ namespace stm32plus {
       void initCapture(uint16_t polarity=TIM_ICPolarity_Rising,uint16_t selection=TIM_ICSelection_DirectTI,uint16_t prescaler=TIM_ICPSC_DIV1,uint16_t filter=0,uint16_t timerPrescaler=1);
       void setCompare(uint32_t compare) const;
       void setDutyCycle(uint8_t dutyCycle);
+			void setDutyCycle(float dutyCycle);
   };
 
 
@@ -154,7 +155,28 @@ namespace stm32plus {
     setCompare(compareValue);
   }
 
+	template<class... Features>
+  inline void TimerChannelFeature<3,Features...>::setDutyCycle(float dutyCycle) {
 
+    uint32_t compareValue,period;
+
+    // remember the setting
+
+    _dutyCycle=static_cast<uint8_t>(dutyCycle);
+
+    // get the timer period from the base class
+
+    period=_timer.getPeriod()+1;
+
+    // watch out for overflow
+
+    if(period<0xFFFFFFFF/100)
+      compareValue=static_cast<uint32_t>((static_cast<float>(period)*(dutyCycle))/100L);
+    else
+      compareValue=static_cast<uint32_t>((static_cast<float>(period/100L))*(dutyCycle));
+
+    setCompare(compareValue);
+  }
   /**
    *  Initialise the channel in input capture mode. This is now deprecated in favour
    *  of using the channel feature classes.
