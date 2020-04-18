@@ -629,7 +629,7 @@ __attribute__( ( always_inline ) ) __STATIC_INLINE void __CLREX(void)
     \return             Saturated value
  */
 #define __SSAT(ARG1,ARG2) \
-({                          \
+__extension__({                          \
   uint32_t __RES, __ARG1 = (ARG1); \
   __ASM ("ssat %0, %1, %2" : "=r" (__RES) :  "I" (ARG2), "r" (__ARG1) ); \
   __RES; \
@@ -645,7 +645,7 @@ __attribute__( ( always_inline ) ) __STATIC_INLINE void __CLREX(void)
     \return             Saturated value
  */
 #define __USAT(ARG1,ARG2) \
-({                          \
+__extension__({                          \
   uint32_t __RES, __ARG1 = (ARG1); \
   __ASM ("usat %0, %1, %2" : "=r" (__RES) :  "I" (ARG2), "r" (__ARG1) ); \
   __RES; \
