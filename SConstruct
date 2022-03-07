@@ -167,7 +167,7 @@ env.Append(CPPPATH=["#lib/include","#lib"])
 
 # create the C and C++ flags that are needed. We can't use the extra or pedantic errors on the ST library code.
 
-env.Replace(CCFLAGS=["-Wall","-Werror","-Wno-implicit-fallthrough","-Wno-error=attributes","-ffunction-sections","-fdata-sections","-fno-exceptions","-mthumb","-gdwarf-2","-pipe"])
+env.Replace(CCFLAGS=["-Wall","-Werror","-Wno-implicit-fallthrough","-Wno-error=address-of-packed-member","-Wno-error=class-memaccess","-Wno-error=deprecated-copy","-Wno-error=cast-function-type","-Wno-error=attributes","-ffunction-sections","-fdata-sections","-fno-exceptions","-mthumb","-gdwarf-2","-pipe"])
 env.Replace(CXXFLAGS=["-Wextra","-Wno-sized-deallocation","-pedantic-errors","-fno-rtti","-std=gnu++0x","-fno-threadsafe-statics"])
 env.Append(CCFLAGS="-D"+osc_def+"="+osc)
 env.Append(LINKFLAGS=["-Xlinker","--gc-sections","-mthumb","-g3","-gdwarf-2"])

@@ -141,7 +141,7 @@ namespace stm32plus {
      * http://www.opensource.org/licenses/bsd-license.php
      */
 
-    uint16_t modp_dtoa(double value,int8_t prec,char *str) {
+/*    uint16_t modp_dtoa(double value,int8_t prec,char *str) {
 
       static const double pow10[] = { 1,10,100,1000,10000,100000,1000000,10000000,100000000,1000000000 };
       uint16_t length;
@@ -206,7 +206,7 @@ namespace stm32plus {
           // exactly 0.5 and ODD, then round up
           // 1.5 -> 2, but 2.5 -> 2 */
 
-          ++whole;
+  /*        ++whole;
         }
 
       } else if(frac) {
@@ -265,6 +265,6 @@ namespace stm32plus {
       }
 
       return length;
-    }
+    }*/
   }
 }

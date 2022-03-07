@@ -33,7 +33,7 @@
 #include "stream/LzgDecompressionInputStream.h"
 #include "stream/ConnectedInputOutputStream.h"
 #include "stream/LinearBufferInputOutputStream.h"
-#include "stream/TextOutputStream.h"
+//#include "stream/TextOutputStream.h"
 #include "stream/StlStringInputStream.h"
 #include "stream/ReadAheadInputStream.h"
 
