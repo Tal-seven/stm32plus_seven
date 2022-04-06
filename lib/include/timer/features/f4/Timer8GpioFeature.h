@@ -27,6 +27,18 @@ namespace stm32plus {
     typedef gpio::PC9 TIM8_CH4_Pin;
   };
 
+  struct TIM8_PinPackage_Remap_Partial1 {
+    typedef gpio::PA0 TIM8_ETR_Pin;
+    typedef gpio::PA6 TIM8_BKIN_Pin;
+    typedef gpio::PA5 TIM8_CH1N_Pin;
+    typedef gpio::PB0 TIM8_CH2N_Pin;
+    typedef gpio::PB1 TIM8_CH3N_Pin;
+    typedef gpio::PC6 TIM8_CH1_Pin;
+    typedef gpio::PC7 TIM8_CH2_Pin;
+    typedef gpio::PC8 TIM8_CH3_Pin;
+    typedef gpio::PC9 TIM8_CH4_Pin;
+  };
+
 
   /**
    * Initialise GPIO pins for this timer GPIO mode
@@ -251,6 +263,12 @@ namespace stm32plus {
 
   template<template<typename> class... Features>
   struct Timer8GpioFeature<TIMER_REMAP_NONE,Features...> : TimerFeatureBase,Features<TIM8_PinPackage_Remap_None>... {
+    Timer8GpioFeature(Timer& timer) : TimerFeatureBase(timer) {
+    }
+  };
+
+   template<template<typename> class... Features>
+  struct Timer8GpioFeature<TIMER_REMAP_PARTIAL1,Features...> : TimerFeatureBase,Features<TIM8_PinPackage_Remap_Partial1>... {
     Timer8GpioFeature(Timer& timer) : TimerFeatureBase(timer) {
     }
   };
