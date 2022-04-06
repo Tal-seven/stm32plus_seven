@@ -19,6 +19,7 @@ namespace stm32plus {
       uint8_t _dutyCycle;
       scoped_ptr<TIM_OCInitTypeDef> _oci;
       scoped_ptr<TIM_ICInitTypeDef> _ici;
+      scoped_ptr<TIM_BDTRInitTypeDef> _bdtr;
 
     public:
       TimerChannelFeatureBase(Timer& timer);
@@ -29,6 +30,7 @@ namespace stm32plus {
 
       operator TIM_OCInitTypeDef&();
       operator TIM_ICInitTypeDef&();
+      operator TIM_BDTRInitTypeDef&();
   };
 
 
@@ -57,6 +59,15 @@ namespace stm32plus {
     }
 
     return *_oci.get();
+  }
+
+  inline TimerChannelFeatureBase::operator TIM_BDTRInitTypeDef&() {
+    if(_bdtr == nullptr) {
+      _bdtr.reset(new TIM_BDTRInitTypeDef);
+      TIM_BDTRStructInit(_bdtr.get());
+    }
+
+    return *_bdtr.get();
   }
 
 

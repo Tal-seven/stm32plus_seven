@@ -44,6 +44,7 @@
 #include "timer/features/channel/TimerChannelOCPulseFeature.h"
 #include "timer/features/channel/TimerChannelOCIdleStateFeature.h"
 #include "timer/features/channel/TimerChannelOCNIdleStateFeature.h"
+#include "timer/features/channel/TimerChannelBDTRFeature.h"
 
 #include "timer/features/channel/TimerChannelICPolarityFeature.h"
 #include "timer/features/channel/TimerChannelICSelectionFeature.h"
@@ -63,6 +64,7 @@
 #include "timer/features/TimerSlaveFeature.h"
 #include "timer/features/TimerEncoderFeature.h"
 #include "timer/features/TimerBreakFeature.h"
+#include "timer/features/TimerCCARRPreloadFeature.h"
 
 // generic peripheral includes
 

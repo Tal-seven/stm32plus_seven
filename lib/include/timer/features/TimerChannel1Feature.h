@@ -24,7 +24,7 @@ namespace stm32plus {
 
       uint32_t getCapture() const;
       void initCompareForPwmOutput(uint8_t initialDutyCycle=0,uint16_t ocMode=TIM_OCMode_PWM1,uint16_t ocPolarity=TIM_OCPolarity_High);
-      void initCompare(uint32_t compareValue,uint16_t ocMode=TIM_OCMode_Toggle,uint16_t polarity=TIM_OCPolarity_Low,uint16_t preload=TIM_OCPreload_Disable);
+      void initCompare(uint32_t compareValue,uint16_t ocMode=TIM_OCMode_Toggle,uint16_t polarity=TIM_OCPolarity_Low,uint16_t preload=TIM_OCPreload_Enable);
       void initCapture(uint16_t polarity=TIM_ICPolarity_Rising,uint16_t selection=TIM_ICSelection_DirectTI,uint16_t prescaler=TIM_ICPSC_DIV1,uint16_t filter=0,uint16_t timerPrescaler=1);
       void setCompare(uint32_t compare) const;
       void setDutyCycle(uint8_t dutyCycle);
@@ -106,6 +106,7 @@ namespace stm32plus {
 
     oci.TIM_OCMode=ocMode;
     oci.TIM_OutputState=TIM_OutputState_Enable;
+    oci.TIM_OutputNState=TIM_OutputNState_Enable;
     oci.TIM_Pulse=compareValue;
     oci.TIM_OCPolarity=polarity;
 
