@@ -28,6 +28,8 @@ namespace stm32plus {
 
       uint32_t calculateFrequency(uint32_t capture1,uint32_t capture2) const;
 
+      uint8_t getDutyCycle() {return _dutyCycle;}
+
       operator TIM_OCInitTypeDef&();
       operator TIM_ICInitTypeDef&();
       operator TIM_BDTRInitTypeDef&();
