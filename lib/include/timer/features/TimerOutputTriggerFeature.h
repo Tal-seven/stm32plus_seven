@@ -51,7 +51,7 @@ namespace stm32plus {
 
   template<>
   inline void TimerOutputTriggerFeature<TIM_TRGOSource_Enable>::enableEnableTrigger() const {
-      TIM_SelectOutputTrigger(_timer,TIM_TRGOSource_Reset);
+      TIM_SelectOutputTrigger(_timer,TIM_TRGOSource_Enable);
   }
 
   template<>
