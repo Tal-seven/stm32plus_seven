@@ -37,6 +37,7 @@ namespace stm32plus {
     public:
       AdcMultiDmaFeature(Dma& dma);
       void beginRead(volatile void *dest,uint32_t count);
+      void beginReadNew(volatile void *dest,uint32_t count);
   };
 
   /*
@@ -108,6 +109,32 @@ namespace stm32plus {
     DMA_Cmd(peripheralAddress,ENABLE);
 
     ADC_DMARequestAfterLastTransferCmd((ADC_TypeDef *)TAdc::PERIPHERAL_BASE,TRequestAfterLastTransfer ? ENABLE : DISABLE);
+    ADC_MultiModeDMARequestAfterLastTransferCmd(TRequestAfterLastTransfer ? ENABLE : DISABLE);
+
+    ADC_DMACmd((ADC_TypeDef *)TAdc::PERIPHERAL_BASE,ENABLE);
+  }
+
+  template<class TAdc,uint32_t TPeripheralDataSize,uint32_t TMemoryDataSize,bool TRequestAfterLastTransfer,uint32_t TPriority,uint32_t TFifoMode>
+  inline void AdcMultiDmaFeature<TAdc,TPeripheralDataSize,TMemoryDataSize,TRequestAfterLastTransfer,TPriority,TFifoMode>::beginReadNew(volatile void *dest,uint32_t count) {
+
+    DMA_Stream_TypeDef *peripheralAddress;
+
+    // set up the parameters for this transfer
+
+    _init.DMA_Memory0BaseAddr=reinterpret_cast<uint32_t>(dest);
+    _init.DMA_BufferSize=count;
+
+    // this class is always in a hierarchy with DmaPeripheral
+
+    peripheralAddress=_dma;
+
+    // disable and then re-enable
+
+    DMA_Cmd(peripheralAddress,DISABLE);
+    DMA_Init(peripheralAddress,&_init);
+    DMA_Cmd(peripheralAddress,ENABLE);
+
+    //ADC_DMARequestAfterLastTransferCmd((ADC_TypeDef *)TAdc::PERIPHERAL_BASE,TRequestAfterLastTransfer ? ENABLE : DISABLE);
     ADC_MultiModeDMARequestAfterLastTransferCmd(TRequestAfterLastTransfer ? ENABLE : DISABLE);
 
     ADC_DMACmd((ADC_TypeDef *)TAdc::PERIPHERAL_BASE,ENABLE);
