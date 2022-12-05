@@ -104,7 +104,7 @@ namespace stm32plus {
 
   template<EncoderCounterEdge TEdge,EncoderPolarity TInput1Polarity,EncoderPolarity TInput2Polarity>
   inline void TimerEncoderFeature<TEdge,TInput1Polarity,TInput2Polarity>::initialiseEncoderCounter(uint32_t period) {
-    _timer.initialiseTimeBase(period,0,TIM_CKD_DIV1,TIM_CounterMode_Up);
+    _timer.initialiseTimeBase(period,625,TIM_CKD_DIV2,TIM_CounterMode_Up);
   }
 
 
