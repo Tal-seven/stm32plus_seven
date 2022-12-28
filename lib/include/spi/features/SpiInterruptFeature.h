@@ -14,7 +14,9 @@
 extern "C" void SPI1_IRQHandler();
 extern "C" void SPI2_IRQHandler();
 extern "C" void SPI3_IRQHandler();
-
+#if defined(STM32PLUS_F4)
+extern "C" void SPI4_IRQHandler();
+#endif
 
 namespace stm32plus {
 
@@ -73,7 +75,9 @@ namespace stm32plus {
   typedef SpiInterruptFeature<1> Spi1InterruptFeature;
   typedef SpiInterruptFeature<2> Spi2InterruptFeature;
   typedef SpiInterruptFeature<3> Spi3InterruptFeature;
-
+  #if defined(STM32PLUS_F4)
+  typedef SpiInterruptFeature<4> Spi4InterruptFeature;
+  #endif
 
   /**
    * Template static data member initialisation
@@ -190,6 +194,13 @@ namespace stm32plus {
     _forceLinkage=&SPI3_IRQHandler;
     Nvic::configureIrq(SPI3_IRQn,ENABLE,priority,subPriority);
   }
+  #if defined(STM32PLUS_F4)
+  template<>
+  inline void SpiInterruptFeatureEnabler<4>::enable(uint8_t priority,uint8_t subPriority) {
+    _forceLinkage=&SPI4_IRQHandler;
+    Nvic::configureIrq(SPI4_IRQn,ENABLE,priority,subPriority);
+  }
+  #endif
 #endif
 
 }

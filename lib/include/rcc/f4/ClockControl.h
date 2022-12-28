@@ -393,6 +393,22 @@ namespace stm32plus {
     }
   };
 
+   /**
+   * SPI4
+   */
+
+  template<>
+  struct ClockControl<PERIPHERAL_SPI4> {
+
+    static void On() {
+      RCC_APB2PeriphClockCmd(RCC_APB2Periph_SPI4,ENABLE);
+    }
+
+    static void Off() {
+      RCC_APB2PeriphClockCmd(RCC_APB2Periph_SPI4,DISABLE);
+    }
+  };
+
   /**
    * SPI1_REMAP
    */

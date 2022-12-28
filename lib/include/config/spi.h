@@ -83,6 +83,7 @@
 
   #include "spi/f4/Spi1.h"
   #include "spi/f4/Spi3.h"
+  #include "spi/f4/Spi4.h"
 
 #endif
 
@@ -91,6 +92,7 @@
 #define USE_SPI1_INTERRUPT
 #define USE_SPI2_INTERRUPT
 #define USE_SPI3_INTERRUPT
+#define USE_SPI4_INTERRUPT
 
 // utility classes
 

@@ -52,6 +52,21 @@ namespace stm32plus {
           spi_cpha=SPI_CPHA_2Edge;
           spi_polynomial=7;
         }
+
+        Parameters(uint16_t direction,uint16_t mode,
+                  uint16_t prescaler, uint16_t firstBit, uint16_t cpol,
+                  uint16_t cpha,uint16_t polynomial,uint16_t datasize): spi_direction{direction},
+                                                                        spi_mode{mode},
+                                                                        spi_baudRatePrescaler{prescaler},
+                                                                        spi_firstBit{firstBit},
+                                                                        spi_cpol{cpol},
+                                                                        spi_cpha{cpha},
+                                                                        spi_polynomial{polynomial},
+                                                                        spi_dataSize{datasize}{}
+
+
+
+
       };
 
     protected:
