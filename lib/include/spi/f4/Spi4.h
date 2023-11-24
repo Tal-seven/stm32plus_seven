@@ -7,7 +7,7 @@
 #pragma once
 
 // ensure the MCU series is correct
-#ifndef STM32PLUS_F4
+#ifndef STM32F429_439xx
 #error This class can only be used with the STM32F4 series
 #endif
 

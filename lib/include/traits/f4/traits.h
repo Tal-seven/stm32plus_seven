@@ -190,6 +190,15 @@ namespace stm32plus {
   typedef PeripheralTraits<PERIPHERAL_SPI4> Spi4PeripheralTraits;
 
   template<>
+  struct PeripheralTraits<PERIPHERAL_SPI5> {
+    enum {
+      GPIO_SPEED = GPIO_Speed_25MHz,
+      PERIPHERAL_BASE = SPI5_BASE,
+    };
+  };
+  typedef PeripheralTraits<PERIPHERAL_SPI5> Spi5PeripheralTraits;
+
+  template<>
   struct PeripheralTraits<PERIPHERAL_TIMER1> {
     enum {
       GPIO_SPEED = GPIO_Speed_50MHz,

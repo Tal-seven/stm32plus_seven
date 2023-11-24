@@ -23,6 +23,7 @@ examples/*/Debug_*/
 # release builder output
 
 dist/
+*.pyc
 
 # OS junk files
 

@@ -45,4 +45,11 @@ namespace stm32plus {
       GPIO_AF = GPIO_AF_SPI4
     };
   };
+
+  template<uint32_t TPort,uint16_t TPin>
+  struct GpioAlternateFunctionMapper<PERIPHERAL_SPI5,TPort,TPin> {
+    enum {
+      GPIO_AF = GPIO_AF_SPI5
+    };
+  };
 }

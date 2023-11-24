@@ -396,6 +396,7 @@ namespace stm32plus {
    /**
    * SPI4
    */
+  #if defined(STM32F427_437xx) || defined(STM32F429_439xx)
 
   template<>
   struct ClockControl<PERIPHERAL_SPI4> {
@@ -409,6 +410,23 @@ namespace stm32plus {
     }
   };
 
+  /**
+   * SPI5
+   */
+
+  template<>
+  struct ClockControl<PERIPHERAL_SPI5> {
+
+    static void On() {
+      RCC_APB2PeriphClockCmd(RCC_APB2Periph_SPI5,ENABLE);
+    }
+
+    static void Off() {
+      RCC_APB2PeriphClockCmd(RCC_APB2Periph_SPI5,DISABLE);
+    }
+  };
+
+  #endif
   /**
    * SPI1_REMAP
    */

@@ -83,7 +83,10 @@
 
   #include "spi/f4/Spi1.h"
   #include "spi/f4/Spi3.h"
+#if defined(STM32F427_437xx) || defined(STM32F429_439xx)
   #include "spi/f4/Spi4.h"
+  #include "spi/f4/Spi5.h"
+#endif
 
 #endif
 
@@ -92,7 +95,10 @@
 #define USE_SPI1_INTERRUPT
 #define USE_SPI2_INTERRUPT
 #define USE_SPI3_INTERRUPT
+#if defined(STM32F427_437xx) || defined(STM32F429_439xx)
 #define USE_SPI4_INTERRUPT
+#define USE_SPI5_INTERRUPT
+#endif
 
 // utility classes
 

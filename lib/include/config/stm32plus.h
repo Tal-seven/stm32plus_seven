@@ -131,7 +131,8 @@ namespace stm32plus {
     PERIPHERAL_USART6,              //!< PERIPHERAL_USART6
     PERIPHERAL_CAN1,				        //!< PERIPHERAL_CAN1
     PERIPHERAL_CAN2,					       //!< PERIPHERAL_CAN2
-    PERIPHERAL_SPI4                 // PERIPHERAL_SPI4 SR Edit
+    PERIPHERAL_SPI4,                // PERIPHERAL_SPI4 SR Edit
+    PERIPHERAL_SPI5                 // PERIPHERAL_SPI5 SR Edit
   };
 
 
